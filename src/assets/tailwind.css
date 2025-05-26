@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-base; 
+    }
+
+    section {
+        @apply mt-8;
+    }
+
+    h1 {
+        @apply text-4xl font-bold tracking-tight;
+    }
+
+    h2 {
+        @apply text-3xl font-semibold tracking-tight;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold tracking-tight;
+    }
+
+    h4 {
+        @apply text-xl font-medium;
+    }
+
+    h5 {
+        @apply text-lg font-medium;
+    }
+
+    h6 {
+        @apply text-base font-medium uppercase text-gray-600;
+    }
+
+    span {
+        @apply text-base; 
+    }
+
+    a {
+        @apply text-blue-600 hover:text-blue-800;
+    }
+
+    caption {
+        @apply mb-1 text-left;
+    }
+
+    table {
+        @apply min-w-full border-collapse border border-gray-300 border-none;
+    }
+
+    thead tr {
+        @apply bg-gray-100; 
+    }
+
+    tbody th {
+        @apply font-normal; 
+    }
+
+    th {
+        @apply w-full;
+    }
+    
+    th, td {
+        @apply border border-gray-300 px-2 py-2 text-left border-none sm:px-4 sm:py-2;
+    }
+
+    tbody tr:hover {
+        @apply bg-gray-50;
+    }
+
+    .tooltip {
+        @apply p-0 m-0;
+    }
+
+    .tooltip i {
+        @apply mx-1;
+    }
+
+    button {
+        @apply !bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300 mr-2;
+    }
+
+    button:hover {
+        @apply !bg-blue-700 text-white;
+    }
+
+    button:focus {
+        @apply outline-none ring-2 ring-blue-400 ring-offset-2;
+    }
+
+    button:disabled {
+        @apply bg-gray-400 cursor-not-allowed opacity-50;
+    }
+
+    button.tooltip {
+        @apply !bg-transparent text-blue-600;
+    }
+
+    .card {
+        @apply flex flex-col gap-1 p-4 bg-gray-100 border-2 border-gray-300 rounded-xl;
+    }
+
+    .card-button {
+         @apply flex flex-col gap-1 p-4 !bg-gray-100 border-2 border-gray-300 rounded-xl text-black;
+    }
+
+    .card button {
+        @apply w-auto max-w-fit;
+    }
+
+    input {
+        @apply px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300;
+    }
+
+    input:disabled {
+        @apply text-gray-400 bg-gray-100 border cursor-not-allowed;
+    }
+
+}
