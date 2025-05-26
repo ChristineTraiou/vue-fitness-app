@@ -100,11 +100,11 @@
     }
 
     .card {
-        @apply flex flex-col gap-1 p-4 bg-gray-100 border-2 border-gray-300 rounded-xl;
+        @apply flex flex-col gap-2 p-4 bg-gray-100 border-2 border-gray-300 rounded-xl;
     }
 
     .card-button {
-         @apply flex flex-col gap-1 p-4 !bg-gray-100 border-2 border-gray-300 rounded-xl text-black;
+         @apply flex flex-col gap-2 p-4 !bg-gray-100 border-2 border-gray-300 rounded-xl text-black;
     }
 
     .card button {

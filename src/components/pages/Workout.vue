@@ -162,15 +162,15 @@
       </div>
 
       <div class="workout-btns">
-            <button type="button" aria-label="Save & Exit Portal">
-               Save & Exit
-               <i class="fa-solid fa-save" aria-hidden="true"></i>
-            </button>
-            <button type="button" aria-label="Complete Portal">
-               Complete
-               <i class="fa-solid fa-check" aria-hidden="true"></i>
-            </button>
-         </div>
+         <button type="button" aria-label="Save & Exit Portal">
+            Save & Exit
+            <i class="fa-solid fa-save" aria-hidden="true"></i>
+         </button>
+         <button type="button" aria-label="Complete Portal">
+            Complete
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+         </button>
+      </div>
    </section>
 </template>
 <!--

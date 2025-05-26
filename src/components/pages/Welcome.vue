@@ -9,15 +9,32 @@
         <div class="flex flex-col gap-3 benefits">
             <h2>Complete this Programm</h2>
             <h3>if you want to...</h3>
-            <ul class="ml-4 list-disc">
-                <li>Follow a simple programm with proven results</li>
-                <li>Get fit, healthy, strong</li>
-                <li>Learn more about gym, training and technique</li>
+            <ul>
+                <li>
+                    <i class="pl-1 fa-solid fa-check" aria-hidden="true"></i>
+                    Follow a simple programm with proven results
+                </li>
+                <li>
+                    <i class="pl-1 fa-solid fa-check" aria-hidden="true"></i>
+                    Get fit, healthy, strong
+                </li>
+                <li>
+                    <i class="pl-1 fa-solid fa-check" aria-hidden="true"></i>
+                    Learn more about gym, training and technique
+                </li>
             </ul>
 
             <h3>The training plan</h3>
             <p>This training plan follows a structure known as the <strong>Bro split</strong>.</p>
-            <h4><i>Push <span aria-hidden="true">&rarr;</span> Pull <span aria-hidden="true">&rarr;</span> Legs <span aria-hidden="true">&rarr;</span> Repeat</i></h4>
+            <h4>
+                <i class="mx-1 fa-solid fa-dumbbell" aria-hidden="true"></i>Push
+                <i class="mx-1 fa-solid fa-arrow-right-long" aria-hidden="true"></i> 
+                <i class="mx-1 fa-solid fa-weight-hanging" aria-hidden="true"></i>Pull
+                <i class="mx-1 fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+                <i class="mx-1 fa-solid fa-bolt" aria-hidden="true"></i>Legs
+                <i class="mx-1 fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+                <i class="mx-1 fa-solid fa-repeat" aria-hidden="true"></i>Repeat
+            </h4>
 
             <div class="card challenge">
                 <h3>Your Challenge</h3>

@@ -22,7 +22,7 @@
                 <img 
                     src="https://avatars.githubusercontent.com/u/208513206?v=4" 
                     alt="Profile Picture of Christine Traiou"
-                    class="rounded-full aspect-square"
+                    class="border-2 border-gray-100 rounded-full shadow-md aspect-square"
                     width="44px"
                     height="44px"
                 >
