@@ -1,5 +1,6 @@
 <script setup>
-
+    import profilePicWebp from '../../assets/img/GitHub_ProfilePicture.webp'
+    import profilePicJpg from '../../assets/img/GitHub_ProfilePicture.jpg'  
 </script>
 
 <template>
@@ -18,65 +19,28 @@
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="flex items-center gap-2 p-2 no-underline duration-200 border-2 border-transparent rounded-full hover:border-blue-800"
-                >
-                <img 
-                    src="https://avatars.githubusercontent.com/u/208513206?v=4" 
-                    alt="Profile Picture of Christine Traiou"
-                    class="border-2 border-gray-100 rounded-full shadow-md aspect-square"
-                    width="44px"
-                    height="44px"
-                >
+            >               
+                <picture>
+                    <source 
+                        :srcset="profilePicWebp" 
+                        type="image/webp" 
+                    />
+                    <img
+                        :src="profilePicJpg"
+                        alt="Profile Picture of Christine Traiou"
+                        loading="lazy"
+                        class="border-2 border-gray-100 rounded-full shadow-md aspect-square"
+                        width="132"
+                        height="132"
+                        style="width: 44px; height: 44px;"
+                    />
+                </picture>
                 <span>Christine Traiou</span>
-                <i class="text-2xl fa-brands fa-github" aria-hidden="true"></i>
+                <span class="text-2xl fa-brands fa-github" aria-hidden="true"></span>
             </a>
         </small>
     </footer>
 </template>
 
-<!--
 <style scoped>
-    header, footer, main {
-        margin: 0 auto;
-        padding: 1rem;
-        width: 100%;
-        max-width: 600px;
-    }
-
-    main {
-        flex: 1;
-    }
-
-    footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 2rem 0;
-        padding-bottom: 3rem;
-    }
-
-    footer a {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.3rem;
-        padding-right: 0.5rem;
-        background-color: var(--background-muted);
-        border-radius: 4rem;
-        border: 1px solid transparent;
-        transition-duration: 200ms;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        border-color: var(--color-link);
-    }
-
-    footer a img {
-        width: 44px;
-        height:44px;
-        border-radius: 100%;
-        aspect-ratio: 1/1;
-    }
 </style>
--->

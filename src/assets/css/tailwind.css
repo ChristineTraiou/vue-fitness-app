@@ -75,7 +75,7 @@
         @apply p-0 m-0;
     }
 
-    .tooltip i {
+    .tooltip span {
         @apply mx-1;
     }
 
@@ -118,5 +118,4 @@
     input:disabled {
         @apply text-gray-400 bg-gray-100 border cursor-not-allowed;
     }
-
 }

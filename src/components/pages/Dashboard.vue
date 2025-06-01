@@ -5,46 +5,34 @@
     const randomNumber = Math.floor(Math.random() * gymHealthFacts.length);
     const todaysFact = gymHealthFacts[randomNumber];
     
-    //Need Access to <Grid/>
     const props = defineProps({
         selectWorkout: Function,
+        firstIncompleteWorkoutIndex: Number,
+        changeDisplay: Function,
+        handleReset: Function,
     })
+
 </script>
 
 <template>
-    <section id="dashboard" class="gap-8">
+    <section id="dashboard" class="flex flex-col gap-6">
         <div class="card tip-container sm:gap-4">
-            <h2>Welcome here!</h2>
+            <h2>Welcome in the Fitness App!</h2>
             <h3>Daily tip:</h3>
             <p>{{todaysFact}}</p>
-            <button type="button">Start Workout <span aria-hidden="true">&rarr;</span></button>
+            <button 
+                type="button"
+                @click = "selectWorkout(firstIncompleteWorkoutIndex < 0 ? 0 : firstIncompleteWorkoutIndex)"
+            >Start Workout <span aria-hidden="true">&rarr;</span></button>
         </div>
-        <Grid v-bind="props"/>
+        <Grid 
+            v-bind="props"
+            :changeDisplay="changeDisplay"
+            :handleReset="handleReset"
+        />
     </section>
 </template>
 
-<!--
 <style scoped>
-    .tip-container, .tip-container div, #dashboard {
-        display: flex;
-    }
 
-    .tip-container,#dashboard {
-       flex-direction: column;
-    }
-
-    #dashboard {
-       gap: 2rem;
-    }
-
-    .tip-container {
-       gap: 0.5rem;
-    }
-
-    @media (min-width: 640px) {
-         .tip-container {
-            gap: 1rem;
-        }
-    }
 </style>
--->

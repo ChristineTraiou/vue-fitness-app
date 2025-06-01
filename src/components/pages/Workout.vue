@@ -1,7 +1,16 @@
 <script setup>
-   import {ref, nextTick, computed} from 'vue'
+   import {ref, nextTick, computed, onMounted, onUnmounted} from 'vue'
    import {workoutProgram, exerciseDescriptions} from '../../utils/index.js'
    import Portal from '../Portal.vue'
+   
+   //Variables with its type, that are beeing declared outside from this File
+   const {data, selectedWorkout} = defineProps({
+      data: Object,
+      selectedWorkout: Number,
+      isWorkoutComplete: Boolean,
+      saveWorkout: Function,
+   })
+   const workoutType = ['Push','Pull','Legs'];
    
    const {warmup, workout} = workoutProgram[selectedWorkout];
    
@@ -33,17 +42,17 @@
    }
 
    //PopUp mit Escape schließen
-   document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-         closePortal(); 
-      }
+   function handleKeyDown(e) {
+      if (e.key === 'Escape') closePortal();
+   }
+
+   onMounted(() => {
+      document.addEventListener('keydown', handleKeyDown);
    });
 
-   //Variables with its type, that are beeing declared outside from this File
-   const {data, selectedWorkout} = defineProps({
-      data:Object,
-      selectedWorkout:Number
-   })
+   onUnmounted(() => {
+      document.removeEventListener('keydown', handleKeyDown);
+   });
 </script>
 
 <template>
@@ -65,10 +74,10 @@
    <section id="workout-card" class="flex flex-col gap-6">
       <div class="flex flex-col plan-card card">
          <div class="flex items-center justify-between gap-4 plan-card-header">        
-            <p>Day {{ selectedWorkout < 9 ? '0' + (selectedWorkout + 1) : selectedWorkout + 1}}</p>
-            <i class="fa-solid fa-dumbbell" ></i>
+            <p>Day {{ selectedWorkout < 9 ? '0' + (selectedWorkout + 1) : (selectedWorkout + 1)}}</p>
+            <span class="fa-solid fa-dumbbell" ></span>
          </div>
-         <h2>{{'Push'}} Workout</h2>
+         <h2>{{workoutType[selectedWorkout%3]}} Workout</h2>
       </div>
       <div class="flex flex-col gap-8 overflow-x-scroll scrollbar">
          <table class="table-fixed">
@@ -88,14 +97,13 @@
                      <button 
                         type="button" 
                         class="tooltip" 
-                        :aria-label="`More info about the ${warmup.name}`" 
-                        :aria-describedby="`warmup-name-${warmupIdx}`"
+                        :aria-labelledby="`warmup-name-${warmupIdx}`"
                         @click="() => {selectedExercise = warmup.name; openPortal();}"
                      >                   
-                        <i 
+                        <span
                            class="fa-regular fa-circle-question hover:text-blue-800" 
                            aria-hidden="true"
-                        ></i>
+                        ></span>
                      </button>
                   </th>
                   <td :headers="`warmup-${warmupIdx}`">
@@ -135,10 +143,9 @@
                      <button 
                         type="button" 
                         class="tooltip" 
-                        :aria-label="`More info about the ${workout.name}`" 
-                        :aria-describedby="`workout-name-${workoutIdx}`"
+                        :aria-labelledby="`workout-name-${workoutIdx}`"
                         @click="() => {selectedExercise = workout.name; openPortal();}">
-                        <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
+                        <span class="fa-regular fa-circle-question" aria-hidden="true"></span>
                      </button>
                   </th>
                   <td :headers="`workout-${workoutIdx}`">
@@ -161,71 +168,26 @@
          </table>
       </div>
 
-      <div class="workout-btns">
-         <button type="button" aria-label="Save & Exit Portal">
+      <div class="btns">
+         <button 
+            type="button" 
+            aria-label="Save & Exit Portal"
+            @click = "saveWorkout">
             Save & Exit
-            <i class="fa-solid fa-save" aria-hidden="true"></i>
+            <span class="fa-solid fa-save" aria-hidden="true"></span>
          </button>
-         <button type="button" aria-label="Complete Portal">
+         <button 
+            type="button" 
+            aria-label="Complete Portal"
+            @click = "saveWorkout"
+            :disabled="!isWorkoutComplete">
             Complete
-            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span class="fa-solid fa-check" aria-hidden="true"></span>
          </button>
       </div>
    </section>
 </template>
-<!--
+
 <style scoped>
-   #workout-card,
-   .plan-card {
-      display: flex;
-      flex-direction: column;
-   }
 
-   #workout-card {
-      gap: 1.5rem;
-   }
-
-   .plan-card-header,
-   .workout-btns {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-   }
-
-   tbody th {
-      background: var(--background-primary);
-   }
-      
-   .name button {
-      border: none;
-      box-shadow: none;
-      background: none;
-      padding: 0;
-   }
-
-   .name button:hover {
-      transform: none;
-      box-shadow: none;
-      color: var(--color-link);
-   }
-
-   .name {
-      text-transform: capitalize;
-   }
-
-   .workout-btns button {
-      flex:1;
-   }
-
-   caption {
-      text-align: left;
-   }
-
-   i {
-      margin: 0 5px;
-      background: transparent;
-   }
 </style>
--->
