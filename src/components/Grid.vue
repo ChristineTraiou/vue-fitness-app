@@ -3,14 +3,12 @@
 
     const workoutTypes = ['Push', 'Pull', 'Legs'];
 
-   const props = defineProps({
+    const props = defineProps({
         selectWorkout: Function,
         firstIncompleteWorkoutIndex: Number,
         changeDisplay: Function,
         handleReset: Function,
     })
-
-
 </script>
 
 <template>
@@ -20,24 +18,25 @@
             v-for = "(workout, workoutIdx) in Object.keys(workoutProgram)"
             :aria-label="`Day ${workoutIdx+ 1}: ${workoutTypes[workoutIdx % 3]} Training`"
             :key = "workoutIdx" 
-            @click="() => selectWorkout(workoutIdx)"
+            @click="selectWorkout(workoutIdx)"
             :disabled = "workoutIdx > 0 && workoutIdx > firstIncompleteWorkoutIndex"
         >               
             <div class="flex items-center justify-between flex-1 w-full gap-2">
                 <span> Day {{ workoutIdx < 9 ? '0' + (workoutIdx + 1) : workoutIdx + 1 }}</span>
-
                 <span class="fa-solid fa-dumbbell" v-if="workoutIdx % 3 == 0" aria-hidden="true"></span>
                 <span class="fa-solid fa-weight-hanging" v-if="workoutIdx % 3 == 1" aria-hidden="true"></span>
                 <span class="fa-solid fa-bolt" v-if="workoutIdx % 3 == 2" aria-hidden="true"></span>
             </div>
-            <span><strong>{{workoutTypes[workoutIdx % 3]}}</strong></span>
+            <span>
+                <strong>{{workoutTypes[workoutIdx % 3]}}</strong>
+            </span>
         </button>
     </div>
     <div class="btns">
         <button 
             type="button" 
             aria-label="Return Back to Start"
-            @click="() => changeDisplay(1)"
+            @click="changeDisplay(1)"
         > 
             <span class="mx-1 fa-solid fa-arrow-left" aria-hidden="true"></span>
             <span>Back</span>
@@ -45,9 +44,9 @@
 
         <button 
             type="button" 
-            aria-label="Reset"
+            aria-label="Reset All"
             @click="handleReset"
-            :disabled="firstIncompleteWorkoutIndex == 0"
+            :disabled="firstIncompleteWorkoutIndex <= 0"
         > 
             <span>Reset</span>
             <span class="mx-1 fa-solid fa-rotate-left" aria-hidden="true"></span>

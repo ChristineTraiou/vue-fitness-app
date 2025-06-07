@@ -1,6 +1,4 @@
 import { createApp } from 'vue'
-//import './style.css'
-//import './fanta.css'
 import './assets/css/tailwind.css';
 import App from './App.vue'
 

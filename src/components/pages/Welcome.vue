@@ -43,8 +43,9 @@
                 <button 
                     type="button"
                     aria-label="Beginn Challenge"
-                    @click="() => changeDisplay(2)"
-                >Beginn Challenge  
+                    @click="changeDisplay(2)"
+                >
+                    Beginn Challenge  
                     <span aria-hidden="true">&rarr;</span>
                 </button>
             </div>

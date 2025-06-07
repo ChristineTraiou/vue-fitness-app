@@ -3,13 +3,14 @@
    import {workoutProgram, exerciseDescriptions} from '../../utils/index.js'
    import Portal from '../Portal.vue'
    
-   //Variables with its type, that are beeing declared outside from this File
+   // Variables with its type, that are beeing declared outside from this File
    const {data, selectedWorkout} = defineProps({
       data: Object,
       selectedWorkout: Number,
       isWorkoutComplete: Boolean,
       saveWorkout: Function,
    })
+   
    const workoutType = ['Push','Pull','Legs'];
    
    const {warmup, workout} = workoutProgram[selectedWorkout];
@@ -23,9 +24,9 @@
    const isOpen = ref(false);
    let previouslyFocusedElement = null;
 
-   //PopUp Focus setzen
+   // Set PopUp Focus
    function openPortal() {
-      previouslyFocusedElement = document.activeElement; // Fokus merken
+      previouslyFocusedElement = document.activeElement;
       isOpen.value = true;
   
       nextTick(() => {
@@ -35,13 +36,13 @@
       });
    }
    
-   //PopUp mit Klick schließen
+   // PopUp Close with Click
    function closePortal() {
       selectedExercise.value = null;
       previouslyFocusedElement.focus();
    }
 
-   //PopUp mit Escape schließen
+   // PopUp Close with Escape
    function handleKeyDown(e) {
       if (e.key === 'Escape') closePortal();
    }
@@ -56,7 +57,10 @@
 </script>
 
 <template>
-   <Portal v-if="selectedExercise" :closePortal="closePortal">
+   <Portal 
+      v-if="selectedExercise" 
+      :closePortal="closePortal"
+   >
      <div 
          class="relative p-4 overflow-y-scroll bg-white border-2 border-gray-300 exercise-description portal-content rounded-xl"
          role="dialog"
@@ -172,7 +176,8 @@
          <button 
             type="button" 
             aria-label="Save & Exit Portal"
-            @click = "saveWorkout">
+            @click = "saveWorkout"
+         >
             Save & Exit
             <span class="fa-solid fa-save" aria-hidden="true"></span>
          </button>
@@ -180,7 +185,8 @@
             type="button" 
             aria-label="Complete Portal"
             @click = "saveWorkout"
-            :disabled="!isWorkoutComplete">
+            :disabled="!isWorkoutComplete"
+         >
             Complete
             <span class="fa-solid fa-check" aria-hidden="true"></span>
          </button>

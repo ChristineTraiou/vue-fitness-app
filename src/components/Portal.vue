@@ -11,9 +11,11 @@
                 <button 
                     class="mb-1 ml-auto mr-0 popup-close w-fit" 
                     aria-label="Close Popup"
-                    @click="closePortal">×
+                    @click="closePortal"
+                >
+                    ×
                 </button>
-                <slot/> 
+                <slot /> 
             </div>     
         </div>
     </Teleport>

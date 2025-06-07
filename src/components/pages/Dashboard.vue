@@ -23,13 +23,12 @@
             <button 
                 type="button"
                 @click = "selectWorkout(firstIncompleteWorkoutIndex < 0 ? 0 : firstIncompleteWorkoutIndex)"
-            >Start Workout <span aria-hidden="true">&rarr;</span></button>
+            >
+                Start Workout
+                <span aria-hidden="true">&rarr;</span>
+            </button>
         </div>
-        <Grid 
-            v-bind="props"
-            :changeDisplay="changeDisplay"
-            :handleReset="handleReset"
-        />
+        <Grid v-bind="props" />
     </section>
 </template>
 
